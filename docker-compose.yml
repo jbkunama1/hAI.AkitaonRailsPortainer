@@ -14,6 +14,8 @@ services:
 
     environment:
       TZ: ${TZ:-Europe/Berlin}
+      AI_MEMORY_AUTH_TOKEN: ${AI_MEMORY_AUTH_TOKEN:-}
+      AI_MEMORY_ALLOWED_HOSTS: ${AI_MEMORY_ALLOWED_HOSTS:-localhost,127.0.0.1,::1,host.docker.internal}
       AI_MEMORY_LLM_PROVIDER: ${AI_MEMORY_LLM_PROVIDER:-}
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
