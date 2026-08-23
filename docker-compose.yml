@@ -1,0 +1,31 @@
+name: hAI.AkitaonRailsPortainer
+
+services:
+  ai-memory:
+    image: ghcr.io/jbkunama1/hai.akitaonrailsportainer:latest
+    container_name: ai-memory
+    restart: unless-stopped
+
+    ports:
+      - "${AI_MEMORY_PORT:-49374}:49374"
+
+    volumes:
+      - ai-memory-data:/data
+
+    environment:
+      TZ: ${TZ:-Europe/Berlin}
+      AI_MEMORY_LLM_PROVIDER: ${AI_MEMORY_LLM_PROVIDER:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      AI_MEMORY_EMBEDDING_PROVIDER: ${AI_MEMORY_EMBEDDING_PROVIDER:-}
+
+    networks:
+      - highfishNetwork
+
+volumes:
+  ai-memory-data:
+    name: hai-akitaonrailsportainer-data
+
+networks:
+  highfishNetwork:
+    external: true
