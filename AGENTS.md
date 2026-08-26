@@ -6,8 +6,7 @@ Dieses Projekt nutzt ai-memory als Langzeitgedächtnis.
 
 Nimm den MCP-Server
 `https://haimcp.arbeitermili.eu/mcp/cms1vfcpi00042bs248msptyv`
-(AnythingMCP, HTTPS) und führe dort die ai-memory-Tools aus —
-siehe auch `.vscode/mcp.json` in diesem Repo.
+(AnythingMCP, HTTPS) und führe dort die ai-memory-Tools aus.
 
 ### Zu Beginn einer Aufgabe
 
