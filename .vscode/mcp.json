@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "ai-memory": {
+      "type": "http",
+      "url": "https://haimcp.arbeitermili.eu/mcp/cms1vfcpi00042bs248msptyv"
+    }
+  }
+}
