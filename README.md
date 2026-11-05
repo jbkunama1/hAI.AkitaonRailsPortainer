@@ -59,6 +59,44 @@ Für API-/MCP-Zugriffe:
 Authorization: Bearer dein-langes-zufaelliges-token
 ```
 
+## Web-UI
+
+Der Portainer-Stack aktiviert die Web-UI über diesen Startbefehl im Service `ai-memory`:
+
+```yaml
+command:
+  - serve
+  - --transport
+  - http
+  - --enable-web
+```
+
+Das Image startet `ai-memory` bereits über seinen Entrypoint. Deshalb darf im `command`-Block kein zusätzliches `ai-memory` vor `serve` stehen. Andernfalls erscheint `unrecognized subcommand 'ai-memory'`.
+
+Nach dem Redeploy im Browser öffnen:
+
+```text
+http://<server-ip>:49374/web
+```
+
+Bei abweichendem `AI_MEMORY_PORT` den entsprechend konfigurierten Port verwenden. Die Server-IP bzw. der verwendete Hostname muss zur bestehenden `AI_MEMORY_ALLOWED_HOSTS`-Konfiguration passen.
+
+Für den einfachen Root-Token-Login bei einer Installation ohne eingerichtete Benutzerkonten:
+
+- Benutzername: beliebig
+- Passwort: Wert von `AI_MEMORY_AUTH_TOKEN`
+- Bei bereits eingerichteten Benutzerkonten die zugehörigen Zugangsdaten verwenden.
+
+`AI_MEMORY_AUTH_TOKEN` in Portainer mit einem starken, nicht leeren Wert setzen bzw. den bestehenden Token beibehalten. Keine zusätzliche Web-UI-ENV erforderlich. Tokens nicht im Repository speichern. Für Internetzugriff HTTPS über einen Reverse Proxy verwenden.
+
+Das Schnellstart-Beispiel oben verwendet den Standardstart des Images. Für die Web-UI beim `docker run` diese Argumente hinter dem Image-Namen ergänzen:
+
+```text
+serve --transport http --enable-web
+```
+
+Die Web-UI nutzt denselben Dienst und Port. Für ihre Aktivierung bleiben Volume und übrige Umgebung unverändert; kein zweiter Container ist nötig.
+
 ## Build
 
 Der Workflow baut bei Tags wie `v1.0.0` und manuell über **Run workflow**:

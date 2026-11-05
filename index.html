@@ -9,5 +9,24 @@
   <h1>hAI.AkitaonRailsPortainer</h1>
   <p>ai-memory als Docker-Image und Portainer-Stack für mein 9router-LLM-Setup.</p>
   <p><a href="https://github.com/jbkunama1/hAI.AkitaonRailsPortainer">GitHub Repository</a></p>
+
+  <h2>Web-UI</h2>
+  <p>Der Portainer-Stack aktiviert die Web-UI mit folgendem Startbefehl im Service <code>ai-memory</code>:</p>
+  <pre><code>command:
+  - serve
+  - --transport
+  - http
+  - --enable-web</code></pre>
+  <p>Kein zusätzliches <code>ai-memory</code> vor <code>serve</code>: Das Image startet das Programm bereits über seinen Entrypoint.</p>
+
+  <h3>Aufruf nach dem Redeploy</h3>
+  <pre><code>http://&lt;server-ip&gt;:49374/web</code></pre>
+  <p>Bei abweichendem <code>AI_MEMORY_PORT</code> den konfigurierten Port verwenden. Server-IP bzw. Hostname müssen zur bestehenden <code>AI_MEMORY_ALLOWED_HOSTS</code>-Konfiguration passen. Diese Projektseite ist nur Dokumentation; die Web-UI läuft auf deinem Server.</p>
+
+  <h3>Login</h3>
+  <p>Für den einfachen Root-Token-Login ohne eingerichtete Benutzerkonten: beliebiger Benutzername, Passwort = Wert von <code>AI_MEMORY_AUTH_TOKEN</code>. Bei bestehenden Benutzerkonten deren Zugangsdaten verwenden.</p>
+  <p>Den bestehenden Token beibehalten oder einen starken, nicht leeren Wert in Portainer setzen. Keine zusätzliche Web-UI-ENV erforderlich. Tokens nicht ins Repository schreiben. Für Internetzugriff HTTPS über einen Reverse Proxy verwenden.</p>
+  <p>Die Web-UI verwendet denselben Dienst und Port. Volume und übrige Umgebung bleiben für die Aktivierung unverändert.</p>
+  <p><a href="https://github.com/jbkunama1/hAI.AkitaonRailsPortainer#web-ui">Web-UI-Anleitung in der README</a></p>
 </body>
 </html>
