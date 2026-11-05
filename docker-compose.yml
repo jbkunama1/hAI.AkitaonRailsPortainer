@@ -5,12 +5,6 @@ services:
     image: ghcr.io/jbkunama1/hai.akitaonrailsportainer:latest
     container_name: ai-memory
     restart: unless-stopped
-    command:
-      - ai-memory
-      - serve
-      - --transport
-      - http
-      - --enable-web
 
     ports:
       - "${AI_MEMORY_PORT:-49374}:49374"
