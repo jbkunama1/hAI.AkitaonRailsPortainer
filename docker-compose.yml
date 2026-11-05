@@ -9,6 +9,8 @@ services:
       - serve
       - --transport
       - http
+      - --bind
+      - 0.0.0.0:49374
       - --enable-web
 
     ports:
